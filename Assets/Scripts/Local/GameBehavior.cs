@@ -10,11 +10,14 @@ public class GameBehavior : MonoBehaviour
     public GameObject player;
     public Transform spawPoint;
     public Camera playerCamera;
+    public GameObject HighlightPositionOsbject;
+    public Transform EntitiesParent;
 
     // Private Fields
     private GameObject playerInstance;
     private bool cameraFollowPlayer = true;
     private Vector3 cameraInputMovement = Vector3.zero;
+    private GameObject highlightPositionInstance;
     
 
     //debug variables
@@ -33,7 +36,7 @@ public class GameBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerInstance = Instantiate(player, spawPoint.position, spawPoint.rotation);
+        playerInstance = Instantiate(player, spawPoint.position, spawPoint.rotation, EntitiesParent);
     }
 
     // Update is called once per frame
@@ -83,6 +86,8 @@ public class GameBehavior : MonoBehaviour
             {
                 Vector3 target = hit.point;
                 playerInstance.GetComponent<PlayerNavigation>().setTargetPosition(target);
+                DestroyTargetPositionHighlight();
+                highlightPositionInstance = Instantiate(HighlightPositionOsbject, target + new Vector3(0.0f, 0.1f, 0.0f), Quaternion.identity, EntitiesParent);
             }
 
             //if the tag of the object hit is "Player", activate camera follow
@@ -98,6 +103,11 @@ public class GameBehavior : MonoBehaviour
         Vector3 v = value.Get<Vector3>();
         cameraFollowPlayer = false;
         cameraInputMovement = v;
+    }
+
+    public void DestroyTargetPositionHighlight()
+    {
+        if (highlightPositionInstance != null) Destroy(highlightPositionInstance);
     }
 
 }

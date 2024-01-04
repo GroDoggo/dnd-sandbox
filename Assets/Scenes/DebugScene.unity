@@ -481,7 +481,7 @@ Transform:
   m_GameObject: {fileID: 431642992}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.2599252, y: 1.4270074, z: 2.7573037}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1066,6 +1066,8 @@ MonoBehaviour:
   player: {fileID: 8044686999887640957, guid: 13e7676c8ac5d7a4d81b805069594844, type: 3}
   spawPoint: {fileID: 1884752102}
   playerCamera: {fileID: 963194227}
+  HighlightPositionOsbject: {fileID: 3265107264857467439, guid: 9cf1995bf8f19634aab7dd5e287c66b2, type: 3}
+  EntitiesParent: {fileID: 431642993}
   yOffset: 10
   zOffset: -8
   xOffset: 0
