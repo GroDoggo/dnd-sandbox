@@ -848,7 +848,7 @@ GameObject:
   - component: {fileID: 1022218080}
   m_Layer: 0
   m_Name: Ground
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1069,6 +1069,8 @@ MonoBehaviour:
   yOffset: 10
   zOffset: -8
   xOffset: 0
+  cameraTranslationSpeed: 0.03
+  cameraRotationSpeed: 0.03
 --- !u!114 &1350859177
 MonoBehaviour:
   m_ObjectHideFlags: 0

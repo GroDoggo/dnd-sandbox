@@ -14,12 +14,17 @@ public class GameBehavior : MonoBehaviour
     // Private Fields
     private GameObject playerInstance;
     private bool cameraFollowPlayer = true;
+    private Vector3 cameraInputMovement = Vector3.zero;
+    
 
     //debug variables
     [Header("Camera Follow Offset")]
     public int yOffset = 10;
     public int zOffset = -8;
     public int xOffset = 0;
+    [Header("Camera Speed")]
+    public float cameraTranslationSpeed = 0.01f;
+    public float cameraRotationSpeed = 0.01f;
 
     // Start is called before the first frame update
     void Start()
@@ -33,6 +38,9 @@ public class GameBehavior : MonoBehaviour
         if (cameraFollowPlayer)
         {
             CameraFollow();
+        } else
+        {
+            playerCamera.transform.position = playerCamera.transform.position + cameraInputMovement * cameraTranslationSpeed;
         }
     }
 
@@ -54,16 +62,20 @@ public class GameBehavior : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit))
         {
-            Vector3 target = hit.point;
-            playerInstance.GetComponent<PlayerNavigation>().setTargetPosition(target);
-
+            //check if the tag of the object hit is "Terrain"
+            if (hit.collider.tag == "Terrain")
+            {
+                Vector3 target = hit.point;
+                playerInstance.GetComponent<PlayerNavigation>().setTargetPosition(target);
+            }
         }
     }
 
     public void OnMoveCamera(InputValue value)
     {
         Vector3 v = value.Get<Vector3>();
-        Debug.Log(v);
+        cameraFollowPlayer = false;
+        cameraInputMovement = v;
     }
 
 }

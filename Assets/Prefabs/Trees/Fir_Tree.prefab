@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 3384114}
   - component: {fileID: 2377290}
   - component: {fileID: 1215370990937522523}
+  - component: {fileID: 6064489794155426424}
   m_Layer: 0
   m_Name: Fir_Tree
-  m_TagString: Untagged
+  m_TagString: Decoration
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -94,9 +95,32 @@ NavMeshObstacle:
   m_Enabled: 1
   serializedVersion: 3
   m_Shape: 0
-  m_Extents: {x: 1.76, y: 3.045, z: 1.76}
+  m_Extents: {x: 1.75, y: 3, z: 1.75}
   m_MoveThreshold: 0.1
   m_Carve: 1
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 2.71, z: 0}
   m_TimeToStationary: 0.5
+--- !u!136 &6064489794155426424
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 192044}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.75
+  m_Height: 6
+  m_Direction: 1
+  m_Center: {x: 0, y: 2.71, z: 0}
