@@ -1071,6 +1071,7 @@ MonoBehaviour:
   xOffset: 0
   cameraTranslationSpeed: 0.03
   cameraRotationSpeed: 0.03
+  rayGameObject: {fileID: 3265107264857467439, guid: 241fc5d84e22e4f449339432254a9822, type: 3}
 --- !u!114 &1350859177
 MonoBehaviour:
   m_ObjectHideFlags: 0

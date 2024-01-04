@@ -25,6 +25,10 @@ public class GameBehavior : MonoBehaviour
     [Header("Camera Speed")]
     public float cameraTranslationSpeed = 0.01f;
     public float cameraRotationSpeed = 0.01f;
+    [Header("Debug Ray Cast")]
+    public GameObject rayGameObject;
+    private GameObject rayInstance;
+
 
     // Start is called before the first frame update
     void Start()
@@ -62,11 +66,29 @@ public class GameBehavior : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit))
         {
-            //check if the tag of the object hit is "Terrain"
+
+            /* DEBUG */
+            if (rayInstance != null)
+                Destroy(rayInstance);
+
+            rayInstance = Instantiate(rayGameObject, Vector3.zero, Quaternion.identity);
+            rayInstance.GetComponent<LineRenderer>().SetPosition(0, ray.origin);
+            rayInstance.GetComponent<LineRenderer>().SetPosition(1, hit.point);
+
+            //Debug.Log("Hit: " + hit.collider.gameObject.name);
+            /* END DEBUG */
+
+            //if the tag of the object hit is "Terrain", move the player to the position of the hit
             if (hit.collider.tag == "Terrain")
             {
                 Vector3 target = hit.point;
                 playerInstance.GetComponent<PlayerNavigation>().setTargetPosition(target);
+            }
+
+            //if the tag of the object hit is "Player", activate camera follow
+            if (hit.collider.tag == "Player")
+            {
+                cameraFollowPlayer = true;
             }
         }
     }
